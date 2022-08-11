@@ -112,6 +112,12 @@ local file_types_au = {
       vim.o.tabstop = 4
     end,
   },
+  {
+    pattern = "go",
+    callback = function()
+      vim.o.expandtab = false
+    end,
+  },
 }
 for _, opts in pairs(file_types_au) do
     vim.api.nvim_create_autocmd("FileType", opts)
