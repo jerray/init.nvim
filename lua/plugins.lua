@@ -29,7 +29,7 @@ return require('packer').startup(function(use)
       end
     }
 
-    use 'Lokaltog/vim-easymotion'
+    use 'easymotion/vim-easymotion'
     use 'tpope/vim-repeat'
 
     use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
