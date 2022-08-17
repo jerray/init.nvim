@@ -106,3 +106,30 @@ vim.cmd([[
 
 o.switchbuf = "usetab"
 o.showtabline = 2 -- Always show tabline
+
+-- Tab size
+local file_types_au = {
+  {
+    pattern = "yaml,json,javascript,typescript,css,scss,less,lua",
+    callback = function()
+      vim.o.shiftwidth = 2
+      vim.o.tabstop = 2
+    end,
+  },
+  {
+    pattern = "php,python",
+    callback = function()
+      vim.o.shiftwidth = 4
+      vim.o.tabstop = 4
+    end,
+  },
+  {
+    pattern = "go",
+    callback = function()
+      vim.o.expandtab = false
+    end,
+  },
+}
+for _, opts in pairs(file_types_au) do
+    vim.api.nvim_create_autocmd("FileType", opts)
+end

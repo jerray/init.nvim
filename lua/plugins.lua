@@ -16,6 +16,7 @@ return require('packer').startup(function(use)
     use 'nvim-lualine/lualine.nvim'
     use 'kyazdani42/nvim-tree.lua'
     use 'liuchengxu/vista.vim'
+    use 'petertriho/nvim-scrollbar'
 
     use 'scrooloose/syntastic'
     use 'scrooloose/nerdcommenter'
@@ -53,6 +54,10 @@ return require('packer').startup(function(use)
       {'hrsh7th/cmp-path'},
       {'hrsh7th/cmp-cmdline'},
       {'saadparwaiz1/cmp_luasnip'},
+      {'onsails/lspkind.nvim'}
     }}
+
+    use 'ray-x/go.nvim'
+    use 'ray-x/guihua.lua'
 
 end)
