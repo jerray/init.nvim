@@ -71,8 +71,6 @@ map('<leader><cr>', ':noh<cr>')
 
 map('<leader>bd', ':Bclose<cr>')
 map('<leader>ba', ':1,300 bd!<cr>')
-map('<right>', '<Cmd>BufferNext<CR>')
-map('<left>', '<Cmd>BufferPrevious<CR>')
 
 -- Tab configuration
 map('<leader>tn', ':tabnew<cr>')

@@ -1,6 +1,8 @@
 local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 
+local lspkind = require('lspkind')
+
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -10,14 +12,20 @@ cmp.setup({
   },
   window = {
     -- completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
+    -- documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-u>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+    -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = true,
+    }),
+
     ['<Up>'] = cmp.mapping.select_prev_item(select_opts),
     ['<Down>'] = cmp.mapping.select_next_item(select_opts),
     ['<C-p>'] = cmp.mapping.select_prev_item(select_opts),
@@ -41,17 +49,13 @@ cmp.setup({
     end, {'i', 's'}),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp', keyword_length = 3 },
-    { name = 'luasnip', keyword_length = 2 }, -- For luasnip users.
-  }, {
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+    { name = 'buffer' },
     { name = 'path' },
-    { name = 'buffer', keyword_length = 3 },
   }),
   formatting = {
-    format = require('lspkind').cmp_format({
-      mode = 'symbol',
-      maxwidth = 50,
-    })
+    format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
   },
 })
 
@@ -82,4 +86,7 @@ cmp.setup.cmdline(':', {
   })
 })
 
-vim.o.completeopt = "menu,menuone,noselect"
+vim.o.completeopt = "menuone,noinsert,noselect"
+vim.cmd [[
+  highlight! default link CmpItemKind CmpItemMenuDefault
+]]

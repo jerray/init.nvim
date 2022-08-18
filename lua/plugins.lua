@@ -12,41 +12,44 @@ return require('packer').startup(function(use)
     use 'olimorris/onedarkpro.nvim'
 
     use 'kyazdani42/nvim-web-devicons'
-    use 'romgrk/barbar.nvim'
+    use { 'akinsho/bufferline.nvim', tag = "v2.*" }
     use 'nvim-lualine/lualine.nvim'
     use 'kyazdani42/nvim-tree.lua'
     use 'liuchengxu/vista.vim'
     use 'petertriho/nvim-scrollbar'
+    use 'folke/zen-mode.nvim'
 
     use 'scrooloose/syntastic'
     use 'scrooloose/nerdcommenter'
 
     use { 'lewis6991/gitsigns.nvim', -- git added/removed in sidebar + inline blame
       requires = { 'nvim-lua/plenary.nvim' },
-      config = function()
-        require('gitsigns').setup({
-          current_line_blame = false
-        })
-      end
     }
 
     use 'easymotion/vim-easymotion'
     use 'tpope/vim-repeat'
 
-    use { 'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
+    use { 'nvim-telescope/telescope.nvim',
+      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
+    }
+    use 'nvim-telescope/telescope-file-browser.nvim'
 
-    use 'tpope/vim-surround'
+    use { 'kylechui/nvim-surround', tag = "*" }
     use 'Raimondi/delimitMate'
     use 'terryma/vim-multiple-cursors'
-    use 'ntpeters/vim-better-whitespace'
     use 'nathanaelkane/vim-indent-guides'
 
     use 'L3MON4D3/LuaSnip'
     use {
-        'nvim-treesitter/nvim-treesitter',
-        run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+      'nvim-treesitter/nvim-treesitter',
+      run = function()
+        require('nvim-treesitter.install').update({ with_sync = true })
+      end,
     }
+
     use 'neovim/nvim-lspconfig'
+    use({ "glepnir/lspsaga.nvim", branch = "main" })
+    use {'onsails/lspkind.nvim'}
 
     use { 'hrsh7th/nvim-cmp', requires = {
       {'hrsh7th/cmp-nvim-lsp'},
@@ -54,7 +57,6 @@ return require('packer').startup(function(use)
       {'hrsh7th/cmp-path'},
       {'hrsh7th/cmp-cmdline'},
       {'saadparwaiz1/cmp_luasnip'},
-      {'onsails/lspkind.nvim'}
     }}
 
     use 'ray-x/go.nvim'

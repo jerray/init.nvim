@@ -11,5 +11,3 @@ end
 if has("win32") then
   require('windows')
 end
-
-require("scrollbar").setup()
