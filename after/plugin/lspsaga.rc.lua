@@ -14,7 +14,7 @@ vim.keymap.set("n", "gp", "<cmd>Lspsaga preview_definition<CR>", opts) -- Defini
 
 -- Show line diagnostics
 vim.keymap.set("n", "<leader>cd", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-vim.keymap.set("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
+-- vim.keymap.set("n", "<leader>cd", "<cmd>Lspsaga show_cursor_diagnostics<CR>", opts)
 
 -- Diagnsotic jump
 vim.keymap.set("n", "<C-j>", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)

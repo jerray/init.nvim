@@ -41,25 +41,11 @@ telescope.setup {
   },
 }
 
-vim.keymap.set('n', '<leader>ff', function()
-  builtin.find_files()
-end)
-
-vim.keymap.set('n', '<leader>fg', function()
-  builtin.live_grep()
-end)
-
-vim.keymap.set('n', '<leader>fb', function()
-  builtin.buffers()
-end)
-
-vim.keymap.set('n', '<leader>fh', function()
-  builtin.help_tags()
-end)
-
-vim.keymap.set('n', '<leader>fe', function()
-  builtin.diagnostics()
-end)
+vim.keymap.set('n', '<leader>ff', function() builtin.find_files() end)
+vim.keymap.set('n', '<leader>fg', function() builtin.live_grep() end)
+vim.keymap.set('n', '<leader>fb', function() builtin.buffers() end)
+vim.keymap.set('n', '<leader>fh', function() builtin.help_tags() end)
+vim.keymap.set('n', '<leader>fe', function() builtin.diagnostics() end)
 
 vim.keymap.set("n", "sf", function()
   telescope.extensions.file_browser.file_browser({
