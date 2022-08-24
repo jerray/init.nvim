@@ -37,6 +37,7 @@ o.mat = 2 -- How many tenths of a second to blink
 
 o.laststatus = 2 -- Always show status line
 o.signcolumn = "yes" -- Always show sign column
+o.number = true -- Show line number
 
 
 -- Text, tab and indent related
@@ -50,14 +51,17 @@ o.textwidth = 500
 o.autoindent = true
 o.smartindent = true
 o.wrap = true
-
-
--- Colors and Fonts
-o.background = "dark"
-o.nu = true
-vim.cmd('colorscheme onedarkpro')
 o.encoding = "utf8"
 o.fileformats = "unix,mac,dos"
+
+
+-- Colors
+o.background = "dark"
+o.termguicolors = true
+o.cursorline = true
+o.winblend = 0
+o.wildoptions = 'pum'
+o.pumblend = 5
 
 
 -- Terminal Mode
