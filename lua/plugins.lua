@@ -7,41 +7,20 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
+    use 'nvim-lua/plenary.nvim'
 
-    -- theme
+    -- UI
     use { 'svrana/neosolarized.nvim',
       requires = { 'tjdevries/colorbuddy.nvim' },
     }
-
     use 'kyazdani42/nvim-web-devicons'
     use { 'akinsho/bufferline.nvim', tag = "v2.*" }
     use 'nvim-lualine/lualine.nvim'
     use 'kyazdani42/nvim-tree.lua'
-    use 'liuchengxu/vista.vim'
     use 'petertriho/nvim-scrollbar'
     use 'folke/zen-mode.nvim'
 
-    use 'scrooloose/syntastic'
-    use 'scrooloose/nerdcommenter'
-
-    use { 'lewis6991/gitsigns.nvim', -- git added/removed in sidebar + inline blame
-      requires = { 'nvim-lua/plenary.nvim' },
-    }
-
-    use 'easymotion/vim-easymotion'
-    use 'tpope/vim-repeat'
-
-    use { 'nvim-telescope/telescope.nvim',
-      requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}},
-    }
-    use 'nvim-telescope/telescope-file-browser.nvim'
-
-    use { 'kylechui/nvim-surround', tag = "*" }
-    use 'Raimondi/delimitMate'
-    use 'terryma/vim-multiple-cursors'
-    use 'nathanaelkane/vim-indent-guides'
-
-    use 'L3MON4D3/LuaSnip'
+    use 'lewis6991/gitsigns.nvim' -- git added/removed in sidebar + inline blame
     use {
       'nvim-treesitter/nvim-treesitter',
       run = function()
@@ -49,12 +28,31 @@ return require('packer').startup(function(use)
       end,
     }
 
+    -- Input and navigation helpers
+    use 'easymotion/vim-easymotion'
+    use 'tpope/vim-repeat'
+    use 'terryma/vim-multiple-cursors'
+    use 'windwp/nvim-autopairs'
+    use { 'kylechui/nvim-surround', tag = "*" }
+    use 'scrooloose/nerdcommenter'
+
+    use { 'nvim-telescope/telescope.nvim',
+      requires = {{'nvim-lua/popup.nvim'}},
+    }
+    use 'nvim-telescope/telescope-file-browser.nvim'
+    use 'folke/trouble.nvim'
+
+    -- LSP
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
-    use({ "glepnir/lspsaga.nvim", branch = "main" })
-    use {'onsails/lspkind.nvim'}
+    use { "glepnir/lspsaga.nvim", branch = "main" }
+    use 'onsails/lspkind.nvim'
+    use 'liuchengxu/vista.vim'
+    use 'jose-elias-alvarez/null-ls.nvim'
 
+    -- Auto completion
+    use 'L3MON4D3/LuaSnip'
     use { 'hrsh7th/nvim-cmp', requires = {
       {'hrsh7th/cmp-nvim-lsp'},
       {'hrsh7th/cmp-buffer'},
@@ -63,6 +61,7 @@ return require('packer').startup(function(use)
       {'saadparwaiz1/cmp_luasnip'},
     }}
 
+    -- Developing Languages
     use 'ray-x/go.nvim'
     use 'ray-x/guihua.lua'
 

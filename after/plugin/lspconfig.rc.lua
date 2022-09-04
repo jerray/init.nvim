@@ -65,9 +65,18 @@ nvim_lsp.sumneko_lua.setup {
 }
 
 -- Python
-nvim_lsp.pylsp.setup{
+nvim_lsp.pyright.setup{
   capabilities = capabilities,
   on_attach = on_attach,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
 }
 
 

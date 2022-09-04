@@ -10,12 +10,16 @@ end
 
 local fb_actions = require "telescope".extensions.file_browser.actions
 
+local trouble = require("trouble.providers.telescope")
+
 telescope.setup {
   defaults = {
     mappings = {
       n = {
         ["q"] = actions.close,
+        ["<c-t>"] = trouble.open_with_trouble,
       },
+      i = { ["<c-t>"] = trouble.open_with_trouble },
     },
   },
   extensions = {
