@@ -54,7 +54,6 @@ o.wrap = true
 o.encoding = "utf8"
 o.fileformats = "unix,mac,dos"
 
-
 -- Colors
 o.background = "dark"
 o.termguicolors = true
@@ -112,10 +111,11 @@ o.showtabline = 2 -- Always show tabline
 -- Tab size
 local file_types_au = {
   {
-    pattern = "yaml,json,javascript,typescript,css,scss,less,lua",
+    pattern = "yaml,json,javascript,typescript,css,scss,less,lua,html,typescriptreact,vue",
     callback = function()
       vim.o.shiftwidth = 2
       vim.o.tabstop = 2
+      vim.o.autoindent = true
     end,
   },
   {
@@ -123,6 +123,7 @@ local file_types_au = {
     callback = function()
       vim.o.shiftwidth = 4
       vim.o.tabstop = 4
+      vim.o.autoindent = true
     end,
   },
   {

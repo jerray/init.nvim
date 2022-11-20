@@ -10,9 +10,18 @@ return require('packer').startup(function(use)
     use 'nvim-lua/plenary.nvim'
 
     -- UI
-    use { 'svrana/neosolarized.nvim',
-      requires = { 'tjdevries/colorbuddy.nvim' },
+    use 'tjdevries/colorbuddy.nvim'
+    use {
+    	"catppuccin/nvim",
+    	as = "catppuccin",
+    	config = function()
+    		require("catppuccin").setup {
+    			flavour = "mocha" -- mocha, macchiato, frappe, latte
+    		}
+    		vim.api.nvim_command "colorscheme catppuccin"
+    	end
     }
+
     use 'kyazdani42/nvim-web-devicons'
     use { 'akinsho/bufferline.nvim', tag = "v2.*" }
     use 'nvim-lualine/lualine.nvim'
@@ -27,6 +36,7 @@ return require('packer').startup(function(use)
         require('nvim-treesitter.install').update({ with_sync = true })
       end,
     }
+    use 'norcalli/nvim-colorizer.lua'
 
     -- Input and navigation helpers
     use 'easymotion/vim-easymotion'
@@ -50,6 +60,7 @@ return require('packer').startup(function(use)
     use 'onsails/lspkind.nvim'
     use 'liuchengxu/vista.vim'
     use 'jose-elias-alvarez/null-ls.nvim'
+    use 'MunifTanjim/prettier.nvim'
 
     -- Auto completion
     use 'L3MON4D3/LuaSnip'

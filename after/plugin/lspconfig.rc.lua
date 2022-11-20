@@ -39,7 +39,7 @@ local on_attach = function(client, bufnr)
 end
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
+local capabilities = require('cmp_nvim_lsp').default_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
@@ -90,8 +90,32 @@ nvim_lsp.pyright.setup{
 -- Vue
 -- Enable take over mode
 nvim_lsp.volar.setup {
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+  filetypes = { "vue" },
 }
+
+
+-- Tailwindcss
+nvim_lsp.tailwindcss.setup {
+  settings = {
+    tailwindCSS = {
+      classAttributes = { "class", "className", "classList", "ngClass", "style" },
+    },
+  },
+}
+
+nvim_lsp.html.setup {
+  capabilities = capabilities,
+}
+
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" }
+}
+
+
+-- PHP
+nvim_lsp.intelephense.setup {}
 
 
 -- Golang

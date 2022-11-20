@@ -4,7 +4,7 @@ if (not status) then return end
 lualine.setup {
   options = {
     icons_enabled = true,
-    theme = 'solarized_dark',
+    theme = 'catppuccin',
   },
   sections = {
     lualine_c = {

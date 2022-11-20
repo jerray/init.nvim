@@ -4,5 +4,5 @@ if (not status) then return end
 mason.setup()
 
 require("mason-lspconfig").setup {
-  ensure_installed = { "lua-language-server" }
+  ensure_installed = { }
 }
