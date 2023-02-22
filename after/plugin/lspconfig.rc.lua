@@ -44,7 +44,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(
 )
 
 -- Lua
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.lua_ls.setup {
   settings = {
     Lua = {
       runtime = {
@@ -80,17 +80,17 @@ nvim_lsp.pyright.setup{
 }
 
 
--- TypeScript
--- nvim_lsp.tsserver.setup{
---   capabilities = capabilities,
---   on_attach = on_attach,
--- }
-
-
 -- Vue
 -- Enable take over mode
 nvim_lsp.volar.setup {
-  filetypes = { "vue" },
+  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+  capabilities = capabilities,
+  on_attach = on_attach,
+  init_options = {
+    typescript = {
+      tsdk = '/opt/homebrew/lib/node_modules/typescript/lib/'
+    }
+  },
 }
 
 
@@ -107,11 +107,11 @@ nvim_lsp.html.setup {
   capabilities = capabilities,
 }
 
-nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" }
-}
+-- nvim_lsp.tsserver.setup {
+--   on_attach = on_attach,
+--   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+--   cmd = { "typescript-language-server", "--stdio" }
+-- }
 
 
 -- PHP

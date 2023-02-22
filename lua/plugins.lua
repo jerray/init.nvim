@@ -60,7 +60,6 @@ return require('packer').startup(function(use)
     use 'onsails/lspkind.nvim'
     use 'liuchengxu/vista.vim'
     use 'jose-elias-alvarez/null-ls.nvim'
-    use 'MunifTanjim/prettier.nvim'
 
     -- Auto completion
     use 'L3MON4D3/LuaSnip'
