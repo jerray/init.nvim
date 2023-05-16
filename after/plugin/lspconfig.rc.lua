@@ -39,9 +39,12 @@ local on_attach = function(client, bufnr)
 end
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').default_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
-)
+local client_capabilities = vim.lsp.protocol.make_client_capabilities()
+client_capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+local capabilities = require('cmp_nvim_lsp').default_capabilities(client_capabilities)
 
 -- Lua
 nvim_lsp.lua_ls.setup {
@@ -83,7 +86,7 @@ nvim_lsp.pyright.setup{
 -- Vue
 -- Enable take over mode
 nvim_lsp.volar.setup {
-  filetypes = {'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json'},
+  filetypes = {'typescript', 'javascript', 'javascriptreact', 'vue', 'json'},
   capabilities = capabilities,
   on_attach = on_attach,
   init_options = {
@@ -98,7 +101,7 @@ nvim_lsp.volar.setup {
 nvim_lsp.tailwindcss.setup {
   settings = {
     tailwindCSS = {
-      classAttributes = { "class", "className", "classList", "ngClass", "style" },
+      classAttributes = { "class", "className", "classList", "ngClass", "style", "tw" },
     },
   },
 }
@@ -107,11 +110,12 @@ nvim_lsp.html.setup {
   capabilities = capabilities,
 }
 
--- nvim_lsp.tsserver.setup {
---   on_attach = on_attach,
---   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
---   cmd = { "typescript-language-server", "--stdio" }
--- }
+nvim_lsp.tsserver.setup {
+  on_attach = on_attach,
+  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  cmd = { "typescript-language-server", "--stdio" },
+  capabilities = capabilities
+}
 
 
 -- PHP

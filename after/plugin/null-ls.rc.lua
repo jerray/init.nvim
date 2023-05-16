@@ -17,9 +17,9 @@ local options =  {
     --null_ls.builtins.diagnostics.pyproject_flake8,
     --null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.prettier,
-    --null_ls.builtins.diagnostics.eslint_d.with({
-    --  diagnostics_format = '[eslint] #{m}\n(#{c})'
-    --}),
+    null_ls.builtins.diagnostics.eslint_d.with({
+      diagnostics_format = '[eslint] #{m}\n(#{c})'
+    }),
     null_ls.builtins.diagnostics.fish
   },
   on_attach = function(client, bufnr)

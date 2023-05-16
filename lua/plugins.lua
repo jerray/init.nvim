@@ -37,12 +37,15 @@ return require('packer').startup(function(use)
       end,
     }
     use 'norcalli/nvim-colorizer.lua'
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
+    use 'luukvbaal/statuscol.nvim'
 
     -- Input and navigation helpers
     use 'easymotion/vim-easymotion'
     use 'tpope/vim-repeat'
     use 'terryma/vim-multiple-cursors'
     use 'windwp/nvim-autopairs'
+    use 'windwp/nvim-ts-autotag'
     use { 'kylechui/nvim-surround', tag = "*" }
     use 'scrooloose/nerdcommenter'
 
@@ -70,6 +73,21 @@ return require('packer').startup(function(use)
       {'hrsh7th/cmp-cmdline'},
       {'saadparwaiz1/cmp_luasnip'},
     }}
+    use {
+      "zbirenbaum/copilot.lua",
+      cmd = "Copilot",
+      event = "InsertEnter",
+      config = function()
+        require("copilot").setup({
+          suggestion = {
+            auto_trigger = true,
+            keymap = {
+              accept = "<M-l>",
+            },
+          },
+        })
+      end,
+    }
 
     -- Developing Languages
     use 'ray-x/go.nvim'
