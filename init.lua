@@ -1,13 +1,2 @@
-vim.g.python3_host_prog = "/opt/homebrew/bin/python3"
-
-require('helpers')
-require('settings')
-require('plugins')
-
-local has = function(x)
-  return vim.fn.has(x) == 1
-end
-
-if has("win32") then
-  require('windows')
-end
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
