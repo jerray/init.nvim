@@ -7,7 +7,7 @@ local opts = { noremap = true, silent = true }
 
 keymap.set("n", "<leader><cr>", ":noh<cr>")
 
-keymap.set("n", "<leader>bd", ":Bclose<cr>")
+-- keymap.set("n", "<leader>bd", ":Bclose<cr>")
 keymap.set("n", "<leader>ba", ":1,300 bd!<cr>")
 
 -- Tab configuration
